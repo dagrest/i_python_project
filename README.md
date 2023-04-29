@@ -1,7 +1,7 @@
 
 # Prerequisite
 - Build docker image for AWS Mock: **docker build -t aws_mock .**  
-- Run command: **docker run --rm -d --name zesty-ec2 -p 4000:4000 zestyco/ec2-challenge**  
+- Run command: **docker run --rm -d --name zesty-ec2 -p 4000:4000 aws_mock**  
 
 # Solution docker image  
 
