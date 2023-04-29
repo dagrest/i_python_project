@@ -42,9 +42,6 @@ def main():
         sorted_df = pandas.DataFrame(ec2list, columns=['InstanceId', 'LaunchTime']).sort_values(['InstanceId', 'LaunchTime'])
         sorted_dict = sorted_df.sort_values(by=['LaunchTime'])
         print(sorted_dict)
-        sorted_dict.to_json(r'my_data.json', orient='values')
-
-        #with open(region+".txt", 'w') as f:
-        #    json.dump(sorted_dict, f)
+        sorted_dict.to_json(r"{}.json".format(region), orient='values')
 
 main()
