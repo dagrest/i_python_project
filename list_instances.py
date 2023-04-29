@@ -23,7 +23,7 @@ def getEc2PerRegion(region):
         service_name = 'ec2',
         aws_access_key_id = 'xxx',
         aws_secret_access_key = 'xxx',
-        endpoint_url = 'http://host.docker.internal:4000',
+        endpoint_url = 'http://host.docker.internal:4000', # can be defined as env var
         region_name = region
     )
     response = ec2.describe_instances()
