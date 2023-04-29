@@ -23,7 +23,7 @@ def getEc2PerRegion(region):
         service_name = 'ec2',
         aws_access_key_id = 'xxx',
         aws_secret_access_key = 'xxx',
-        endpoint_url = 'http://127.0.0.1:4000',
+        endpoint_url = 'http://host.docker.internal:4000',
         region_name = region
     )
     response = ec2.describe_instances()
@@ -37,11 +37,9 @@ def main():
     regions = readFile('regions.txt')
     for region in regions:
         ec2list = getEc2PerRegion(region)
-        #sortedEc2List = dict(sort_values(ec2list.items()))
-        #sorted_dict = {k: v for k, v in sorted(ec2list.items(), key=lambda item: item[1])}
         sorted_df = pandas.DataFrame(ec2list, columns=['InstanceId', 'LaunchTime']).sort_values(['InstanceId', 'LaunchTime'])
         sorted_dict = sorted_df.sort_values(by=['LaunchTime'])
-        print(sorted_dict)
+        #print(sorted_dict)
         sorted_dict.to_json(r"{}.json".format(region), orient='values')
 
 main()

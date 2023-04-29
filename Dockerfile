@@ -7,8 +7,6 @@ COPY . .
 #COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-#COPY . .
-
 # Set the FLASK_APP environment variable
 ENV FLASK_APP=server.py
 
@@ -16,4 +14,4 @@ ENV FLASK_APP=server.py
 EXPOSE 5000
 
 # Start the Flask server
-CMD ["flask", "run", "--host", "0.0.0.0"]
+CMD python list_instances.py && flask run --host 0.0.0.0
